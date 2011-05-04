@@ -8,32 +8,32 @@
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Funktionale Tests mit Geb und Spock</name>
+	<name>maven-geb-and-spock-tests</name>
 	<description>
-		Demo für die Verwendung von Groovy in Kombination mit den Frameworks Geb und Spock für funktionale Tests in einem Maven Build.
+		Demo project that shows how to run functional tests with Geb and Spock in a Maven build.
 	</description>
 
 	<properties>
-		<!-- Encoding von Projekt-Artefakten -->
+		<!-- encoding of project resources -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<!-- Groovy-Version und Angabe der Major-Version für den Compiler -->
+		<!-- Groovy version and Groovy major version for the compiler -->
 		<groovy.version>1.7.9</groovy.version>
 		<groovy.version.major>1.7</groovy.version.major>
 
-		<!-- Dependency-Versionen -->
+		<!-- dependency versions -->
 		<spock.version>0.5-groovy-1.7</spock.version>
 		<geb.version>0.5.1</geb.version>
 		<selenium.version>2.0b1</selenium.version>
 		
-		<!-- Plugin-Versionen -->
+		<!-- plugin versions -->
 		<gmaven.version>1.3</gmaven.version>
 		<surefire.version>2.8.1</surefire.version>
 	</properties>
 
 	<build>
 		<plugins>
-			<!-- Kompilierung von Groovy-Klassen -->
+			<!-- compilation of Groovy classes -->
 			<plugin>
 				<groupId>org.codehaus.gmaven</groupId>
 				<artifactId>gmaven-plugin</artifactId>
@@ -67,7 +67,8 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			<!-- Surefire-Plugin findet Spock-Spezifikationen -->
+
+			<!-- instructing maven-surefire-plugin to pick up Spock specifications by naming conventions -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -83,7 +84,7 @@
 	</build>
 
 	<dependencies>
-		<!-- Spock Framework -->
+		<!-- Spock specification framework -->
 		<dependency>
 			<groupId>org.spockframework</groupId>
 			<artifactId>spock-core</artifactId>
@@ -97,7 +98,7 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Groovy Bibliothek -->
+		<!-- Groovy library -->
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
@@ -105,7 +106,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Geb-Framework -->
+		<!-- Geb testing framework -->
 		<dependency>
 			<groupId>org.codehaus.geb</groupId>
 			<artifactId>geb-core</artifactId>
@@ -113,14 +114,14 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- Selenium-Driver für die Navigation über Webseiten -->
+		<!-- Selenium's HtmlUnit-driver for Geb -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-htmlunit-driver</artifactId>
 			<version>${selenium.version}</version>
 		</dependency>
 
-		<!-- Geb- und Spock-Integration -->
+		<!-- integration of Geb and Spock -->
 		<dependency>
 			<groupId>org.codehaus.geb</groupId>
 			<artifactId>geb-spock</artifactId>
