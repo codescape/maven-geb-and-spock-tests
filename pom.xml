@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.codescape.demo.groovy</groupId>
+	<artifactId>maven-geb-and-spock-tests</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>Funktionale Tests mit Geb und Spock</name>
+	<description>
+		Demo für die Verwendung von Groovy in Kombination mit den Frameworks Geb und Spock für funktionale Tests in einem Maven Build.
+	</description>
+
+	<properties>
+		<!-- Encoding von Projekt-Artefakten -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Groovy-Version und Angabe der Major-Version für den Compiler -->
+		<groovy.version>1.7.9</groovy.version>
+		<groovy.version.major>1.7</groovy.version.major>
+
+		<!-- Dependency-Versionen -->
+		<spock.version>0.5-groovy-1.7</spock.version>
+		<geb.version>0.5.1</geb.version>
+		<selenium.version>2.0b1</selenium.version>
+		
+		<!-- Plugin-Versionen -->
+		<gmaven.version>1.3</gmaven.version>
+		<surefire.version>2.8.1</surefire.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<!-- Kompilierung von Groovy-Klassen -->
+			<plugin>
+				<groupId>org.codehaus.gmaven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<version>${gmaven.version}</version>
+				<configuration>
+					<providerSelection>${groovy.version.major}</providerSelection>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.codehaus.gmaven.runtime</groupId>
+						<artifactId>gmaven-runtime-1.7</artifactId>
+						<version>${gmaven.version}</version>
+						<exclusions>
+							<exclusion>
+								<groupId>org.codehaus.groovy</groupId>
+								<artifactId>groovy-all</artifactId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+					<dependency>
+						<groupId>org.codehaus.groovy</groupId>
+						<artifactId>groovy-all</artifactId>
+						<version>${groovy.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<!-- Surefire-Plugin findet Spock-Spezifikationen -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.version}</version>
+				<configuration>
+					<includes>
+						<include>**/*Spec.java</include>
+						<include>**/*Specification.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<!-- Spock Framework -->
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>${spock.version}</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.codehaus.groovy</groupId>
+					<artifactId>groovy-all</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- Groovy Bibliothek -->
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>${groovy.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Geb-Framework -->
+		<dependency>
+			<groupId>org.codehaus.geb</groupId>
+			<artifactId>geb-core</artifactId>
+			<version>${geb.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Selenium-Driver für die Navigation über Webseiten -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+		<!-- Geb- und Spock-Integration -->
+		<dependency>
+			<groupId>org.codehaus.geb</groupId>
+			<artifactId>geb-spock</artifactId>
+			<version>${geb.version}</version>
+		</dependency>
+	</dependencies>
+
+</project>
