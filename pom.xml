@@ -25,13 +25,16 @@
 		<spock.version>0.5-groovy-1.7</spock.version>
 		<geb.version>0.5.1</geb.version>
 		<selenium.version>2.0b1</selenium.version>
-		
+
 		<!-- plugin versions -->
 		<gmaven.version>1.3</gmaven.version>
 		<surefire.version>2.8.1</surefire.version>
 	</properties>
 
 	<build>
+		<!-- help for eclipse to make src/test/groovy a source directory -->
+		<testSourceDirectory>src/test/groovy</testSourceDirectory>
+		
 		<plugins>
 			<!-- compilation of Groovy classes -->
 			<plugin>
