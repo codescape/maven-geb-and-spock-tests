@@ -3,7 +3,7 @@ package specs
 import spock.lang.Specification
 
 class SimpleSpockSpec extends Specification {
-    def "Zeichenlänge von Strings"() {
+    def "Strings should return their size"() {
         expect:
         name.size() == size
         
@@ -13,5 +13,6 @@ class SimpleSpockSpec extends Specification {
         "Geb"       | 3
         "Maven"     | 5
         "Groovy"    | 6
+        ""          | 0
     }
 }
