@@ -5,9 +5,9 @@ import geb.spock.GebSpec
 class SimpleGebSpec extends GebSpec {
     def "Geb documentation page should be accessible"() {
         when:
-        go "http://geb.codehaus.org/latest/manual/"
+        go "http://www.gebish.org/manual/current/"
         
         then:
-        $("h1.title").text() == "The Book Of Geb"
+        $("h1").text() == "The Book Of Geb"
     }
 }
