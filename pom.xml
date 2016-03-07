@@ -77,7 +77,6 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>${surefire.version}</version>
 				<configuration>
-				 	<skipTests>true</skipTests>
 					<includes>
 						<include>**/*Spec.java</include>
 						<include>**/*Specification.java</include>
